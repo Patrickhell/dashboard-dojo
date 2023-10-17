@@ -19,16 +19,20 @@
         </li>
       </ul>
     </div>
-    <div class="chart-content">
+    <div class="chartLine-content">
       <LineChartGenerator />
+    </div>
+    <div class="barLine-content">
+      <BarChart />
     </div>
   </div>
 </template>
 <script>
 import LineChartGenerator from "@/components/Line.vue";
+import BarChart from "@/components/Bar.vue";
 export default {
   name: "MainSide",
-  components: { LineChartGenerator },
+  components: { LineChartGenerator, BarChart },
   props: {
     nav: String,
   },

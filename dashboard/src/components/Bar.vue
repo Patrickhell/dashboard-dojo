@@ -1,38 +1,38 @@
 <template>
-  <LineChartGenerator
-    v-if="loaded"
-    :data="chartData"
-    :options="chartOptions"
-    :chart-id="chartId"
-    :dataset-id-key="datasetIdKey"
-    :plugins="plugins"
-    :css-classes="cssClasses"
-    :styles="styles"
-    :width="width"
-    :height="height"
-  />
+  <div>
+    <Bar
+      v-if="loaded"
+      :data="chartData"
+      :options="chartOptions"
+      :chart-id="chartId"
+      :plugins="plugins"
+      :css-classes="cssClasses"
+      :styles="styles"
+      :width="width"
+      :height="height"
+      label="User Age Range"
+    />
+  </div>
 </template>
 <script>
 import axios from "axios";
-import { Line as LineChartGenerator } from "vue-chartjs";
+import { Bar } from "vue-chartjs";
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  LineElement,
+  BarElement,
   LinearScale,
   CategoryScale,
-  PointElement,
 } from "chart.js";
 ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  LineElement,
+  BarElement,
   LinearScale,
-  CategoryScale,
-  PointElement
+  CategoryScale
 );
 const getUrl = "https://api.jsonbin.io/v3/b/6528a5f012a5d376598b094c"; // request URL
 const token = "$2a$10$pSgYR7heD8q/g4lbvy7QR.2QAlkkn19qEFW2z7MwRaFvKbgG2bWSu"; // access token
@@ -40,16 +40,14 @@ var axiosHeaders = {
   headers: { "X-MASTER-KEY": token },
 };
 export default {
-  name: "LineChart",
-  components: { LineChartGenerator },
+  name: "BarChart",
+  components: {
+    Bar,
+  },
   props: {
     chartId: {
       type: String,
-      default: "line-chart",
-    },
-    datasetIdKey: {
-      type: String,
-      default: "label",
+      default: "bar-chart",
     },
     width: {
       type: Number,
@@ -57,7 +55,7 @@ export default {
     },
     height: {
       type: Number,
-      default: 150,
+      default: 200,
     },
     cssClasses: {
       default: "",
@@ -71,6 +69,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    label: {
+      type: String,
+      default: "User Age Range",
+    },
   },
   data() {
     return {
@@ -79,11 +81,17 @@ export default {
         labels: [],
         datasets: [
           {
-            label: "Montly",
+            label: this.label,
             borderColor: "#9ebfc5",
             pointBackgroundColor: "#9ebfc5",
             data: [],
-            backgroundColor: ["#e0ebed"],
+            backgroundColor: [
+              "#3e95cd",
+              "#8e5ea3",
+              "#5abb9f",
+              "#E8c3b9",
+              "#c45850",
+            ],
           },
         ],
       },
@@ -103,10 +111,10 @@ export default {
     axios
       .get(getUrl, axiosHeaders)
       .then((response) => {
-        console.log(response.data.record.MonthlyConnections);
-        const results = response.data.record.MonthlyConnections;
+        console.log(response.data.record.UsersAgeRange);
+        const results = response.data.record.UsersAgeRange;
         results.forEach((item) => {
-          this.chartData.labels.push(item.month);
+          this.chartData.labels.push(item.range);
           this.chartData.datasets[0].data.push(item.connections);
           this.loaded = true;
         });
