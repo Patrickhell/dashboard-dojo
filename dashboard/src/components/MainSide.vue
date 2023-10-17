@@ -65,7 +65,7 @@ img {
 .navbar {
   background-color: #ededed;
   height: 50px;
-  width: calc(1200px - 200px);
+  width: calc(100vw - 200px);
 }
 .chartLine-content {
   margin-top: 4rem;
