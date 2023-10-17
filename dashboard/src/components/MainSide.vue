@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-fluid">
     <div class="navbar d-flex justify-content-between">
       <ul>
         <li>
@@ -19,20 +19,29 @@
         </li>
       </ul>
     </div>
+    <p class="fw-bold mt-4">Monthly Connections</p>
     <div class="chartLine-content">
       <LineChartGenerator />
     </div>
-    <div class="barLine-content">
-      <BarChart />
+    <div class="barLine_doughnut-content d-flex">
+      <div>
+        <p class="fw-bold">User Age Range</p>
+        <BarChart />
+      </div>
+      <div>
+        <p class="fw-bold">Operating System</p>
+        <DoughnutChart />
+      </div>
     </div>
   </div>
 </template>
 <script>
 import LineChartGenerator from "@/components/Line.vue";
 import BarChart from "@/components/Bar.vue";
+import DoughnutChart from "@/components/Doughnut.vue";
 export default {
   name: "MainSide",
-  components: { LineChartGenerator, BarChart },
+  components: { LineChartGenerator, BarChart, DoughnutChart },
   props: {
     nav: String,
   },
@@ -56,5 +65,10 @@ img {
 .navbar {
   background-color: #ededed;
   height: 50px;
+  width: calc(1200px - 200px);
+}
+.chartLine-content {
+  margin-top: 4rem;
+  margin-bottom: 6rem;
 }
 </style>

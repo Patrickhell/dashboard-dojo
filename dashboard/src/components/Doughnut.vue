@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Bar
+    <Doughnut
       v-if="loaded"
       :data="chartData"
       :options="chartOptions"
@@ -10,38 +10,31 @@
       :styles="styles"
       :width="width"
       :height="height"
+      label="Operating System"
     />
   </div>
 </template>
 <script>
 import axios from "axios";
-import { Bar } from "vue-chartjs";
+import { Doughnut } from "vue-chartjs";
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  BarElement,
-  LinearScale,
+  ArcElement,
   CategoryScale,
 } from "chart.js";
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  LinearScale,
-  CategoryScale
-);
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 const getUrl = "https://api.jsonbin.io/v3/b/6528a5f012a5d376598b094c"; // request URL
 const token = "$2a$10$pSgYR7heD8q/g4lbvy7QR.2QAlkkn19qEFW2z7MwRaFvKbgG2bWSu"; // access token
 var axiosHeaders = {
   headers: { "X-MASTER-KEY": token },
 };
 export default {
-  name: "BarChart",
+  name: "DoughnutChart",
   components: {
-    Bar,
+    Doughnut,
   },
   props: {
     chartId: {
@@ -68,6 +61,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    label: {
+      type: String,
+      default: "User Age Range",
+    },
   },
   data() {
     return {
@@ -76,13 +73,13 @@ export default {
         labels: [],
         datasets: [
           {
-            label: "",
+            label: this.label,
             data: [],
             backgroundColor: [
               "#3e95cd",
               "#8e5ea3",
               "#5abb9f",
-              "#E8c3b9",
+              "#e8c3b9",
               "#c45850",
             ],
           },
@@ -96,10 +93,13 @@ export default {
             left: 40,
             right: 40,
           },
-          plugins: {
-            legend: {
-              display: false,
-            },
+          autoPadding: true,
+        },
+        plugins: {
+          legend: {
+            display: true,
+            align: "center",
+            position: "right",
           },
         },
       },
@@ -109,10 +109,10 @@ export default {
     axios
       .get(getUrl, axiosHeaders)
       .then((response) => {
-        console.log(response.data.record.UsersAgeRange);
-        const results = response.data.record.UsersAgeRange;
+        console.log(response.data.record.Devices);
+        const results = response.data.record.Devices;
         results.forEach((item) => {
-          this.chartData.labels.push(item.range);
+          this.chartData.labels.push(item.os);
           this.chartData.datasets[0].data.push(item.connections);
           this.loaded = true;
         });

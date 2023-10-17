@@ -1,5 +1,5 @@
 <template>
-  <div class="layout d-flex">
+  <div class="layout d-flex justify-content-center">
     <LeftSide first_name="mio nome" class="leftside" />
     <MainSide nav="nav bar" class="mainside" />
   </div>
@@ -25,7 +25,7 @@ export default {
   box-sizing: border-box;
 }
 div.layout {
-  width: 100vw;
+  width: 1200px;
   height: 100vh;
 }
 .leftside {
@@ -35,5 +35,6 @@ div.layout {
 }
 .mainside {
   width: calc(100% - 200px);
+  margin: 0 auto;
 }
 </style>
