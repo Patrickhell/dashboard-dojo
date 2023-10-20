@@ -5,9 +5,6 @@
       :data="chartData"
       :options="chartOptions"
       :chart-id="chartId"
-      :plugins="plugins"
-      :css-classes="cssClasses"
-      :styles="styles"
       :width="width"
       :height="height"
     />
@@ -54,19 +51,7 @@ export default {
     },
     height: {
       type: Number,
-      default: 200,
-    },
-    cssClasses: {
-      default: "",
-      type: String,
-    },
-    styles: {
-      type: Object,
-      default: () => {},
-    },
-    plugins: {
-      type: Array,
-      default: () => [],
+      default: 250,
     },
   },
   data() {
@@ -96,10 +81,14 @@ export default {
             left: 40,
             right: 40,
           },
-          plugins: {
-            legend: {
-              display: false,
-            },
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: "User Age Range",
+          },
+          legend: {
+            display: false,
           },
         },
       },

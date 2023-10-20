@@ -4,10 +4,6 @@
     :data="chartData"
     :options="chartOptions"
     :chart-id="chartId"
-    :dataset-id-key="datasetIdKey"
-    :plugins="plugins"
-    :css-classes="cssClasses"
-    :styles="styles"
     :width="width"
     :height="height"
   />
@@ -47,10 +43,6 @@ export default {
       type: String,
       default: "line-chart",
     },
-    datasetIdKey: {
-      type: String,
-      default: "label",
-    },
     width: {
       type: Number,
       default: 600,
@@ -58,18 +50,6 @@ export default {
     height: {
       type: Number,
       default: 150,
-    },
-    cssClasses: {
-      default: "",
-      type: String,
-    },
-    styles: {
-      type: Object,
-      default: () => {},
-    },
-    plugins: {
-      type: Array,
-      default: () => [],
     },
   },
   data() {
@@ -94,6 +74,12 @@ export default {
           padding: {
             left: 40,
             right: 40,
+          },
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: "Monthly Connections",
           },
         },
       },

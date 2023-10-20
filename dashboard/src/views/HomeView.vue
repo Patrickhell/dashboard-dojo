@@ -26,12 +26,12 @@ export default {
 }
 div.layout {
   width: 1200px;
-  height: 100vh;
 }
 .leftside {
   width: 200px;
   background-color: #2b4154;
   color: white;
+  height: auto;
 }
 .mainside {
   width: calc(100% - 200px);

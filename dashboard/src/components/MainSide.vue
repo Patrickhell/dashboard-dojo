@@ -19,18 +19,20 @@
         </li>
       </ul>
     </div>
-    <p class="fw-bold mt-4">Monthly Connections</p>
     <div class="chartLine-content">
       <LineChartGenerator />
     </div>
     <div class="barLine_doughnut-content d-flex">
       <div>
-        <p class="fw-bold">User Age Range</p>
         <BarChart />
       </div>
       <div>
-        <p class="fw-bold">Operating System</p>
         <DoughnutChart />
+      </div>
+    </div>
+    <div>
+      <div class="SolarChart-content">
+        <SolarLineChart />
       </div>
     </div>
   </div>
@@ -39,9 +41,10 @@
 import LineChartGenerator from "@/components/Line.vue";
 import BarChart from "@/components/Bar.vue";
 import DoughnutChart from "@/components/Doughnut.vue";
+import SolarLineChart from "@/components/LineChart.vue";
 export default {
   name: "MainSide",
-  components: { LineChartGenerator, BarChart, DoughnutChart },
+  components: { LineChartGenerator, BarChart, DoughnutChart, SolarLineChart },
   props: {
     nav: String,
   },
@@ -70,5 +73,11 @@ img {
 .chartLine-content {
   margin-top: 4rem;
   margin-bottom: 6rem;
+}
+.barLine_doughnut-content {
+  margin-bottom: 10rem;
+}
+.SolarChart-content {
+  margin-bottom: 5rem;
 }
 </style>

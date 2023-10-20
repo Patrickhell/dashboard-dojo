@@ -5,12 +5,8 @@
       :data="chartData"
       :options="chartOptions"
       :chart-id="chartId"
-      :plugins="plugins"
-      :css-classes="cssClasses"
-      :styles="styles"
       :width="width"
       :height="height"
-      label="Operating System"
     />
   </div>
 </template>
@@ -47,23 +43,7 @@ export default {
     },
     height: {
       type: Number,
-      default: 200,
-    },
-    cssClasses: {
-      default: "",
-      type: String,
-    },
-    styles: {
-      type: Object,
-      default: () => {},
-    },
-    plugins: {
-      type: Array,
-      default: () => [],
-    },
-    label: {
-      type: String,
-      default: "User Age Range",
+      default: 250,
     },
   },
   data() {
@@ -100,6 +80,10 @@ export default {
             display: true,
             align: "center",
             position: "right",
+          },
+          title: {
+            display: true,
+            text: "Operating System",
           },
         },
       },
