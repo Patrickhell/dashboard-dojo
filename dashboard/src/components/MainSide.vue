@@ -35,6 +35,14 @@
         <SolarLineChart />
       </div>
     </div>
+    <div class="d-flex">
+      <div>
+        <BarChartGenerator />
+      </div>
+      <div>
+        <DoughnutGenerator />
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -42,9 +50,18 @@ import LineChartGenerator from "@/components/Line.vue";
 import BarChart from "@/components/Bar.vue";
 import DoughnutChart from "@/components/Doughnut.vue";
 import SolarLineChart from "@/components/LineChart.vue";
+import BarChartGenerator from "@/components/BarChart.vue";
+import DoughnutGenerator from "@/components/DoughnutChart.vue";
 export default {
   name: "MainSide",
-  components: { LineChartGenerator, BarChart, DoughnutChart, SolarLineChart },
+  components: {
+    LineChartGenerator,
+    BarChart,
+    DoughnutChart,
+    SolarLineChart,
+    BarChartGenerator,
+    DoughnutGenerator,
+  },
   props: {
     nav: String,
   },

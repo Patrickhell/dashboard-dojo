@@ -77,6 +77,15 @@ export default {
             text: "Solar Power",
           },
         },
+        scale: {
+          yAxes: [
+            {
+              ticks: {
+                BeginAtZero: true,
+              },
+            },
+          ],
+        },
       },
     };
   },
@@ -95,7 +104,7 @@ export default {
             borderColor: "#9ebfc5",
             pointBackgroundColor: "#9ebfc5",
             //generiamo un array di numeri casuali (asse Y) compresi da 0 a 100
-            // grazie al metodo getRandomInt()
+            //grazie al metodo getRandomInt()
             data: [0].concat(
               Array.from({ length: 23 }, () => this.getRandomIntWithVariation())
             ),

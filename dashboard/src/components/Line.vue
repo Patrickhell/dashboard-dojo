@@ -49,7 +49,7 @@ export default {
     },
     height: {
       type: Number,
-      default: 150,
+      default: 200,
     },
   },
   data() {
@@ -60,10 +60,10 @@ export default {
         datasets: [
           {
             label: "Montly",
-            borderColor: "#9ebfc5",
+            borderColor: "rgba(50, 115, 220, 0.5)",
             pointBackgroundColor: "#9ebfc5",
             data: [],
-            backgroundColor: ["#e0ebed"],
+            backgroundColor: "rgba(50, 115, 220, 0.5)",
           },
         ],
       },
