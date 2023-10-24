@@ -35,7 +35,7 @@
         <SolarLineChart />
       </div>
     </div>
-    <div class="d-flex">
+    <div class="d-flex mb-5">
       <div>
         <BarChartGenerator />
       </div>
